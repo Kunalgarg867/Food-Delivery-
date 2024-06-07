@@ -7,6 +7,14 @@ const Cart = () => {
   const {cartItems,food_list,removeFromCart,getTotalCartAmount} = useContext(StoreContext);
 
   const navigate = useNavigate();
+  const checkout = () => {
+    if(getTotalCartAmount() === 0){
+      alert("add some items in cart to proceed")
+    }
+      else{
+        navigate('/Placeorder')
+      }
+    }
   return (
     <div className='cart'> 
       <div className="cart-items">
@@ -30,7 +38,7 @@ const Cart = () => {
                 <p>${item.price}</p>
                 <p>{cartItems[item._id]}</p>
                 <p>${item.price*cartItems[item._id]}</p>
-                <p onClick={()=>removeFromCart(item._id)} className='cross'>x</p>
+                <p onClick={} className='cross'>x</p>
             </div>
             <hr />
             </div>
@@ -57,7 +65,7 @@ const Cart = () => {
               <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
             </div>
           </div>
-          <button onClick={()=>navigate('/Placeorder')}>PROCEED TO CHECK OUT</button>
+          <button onClick={checkout()}>PROCEED TO CHECK OUT</button>
 
         </div>
 
